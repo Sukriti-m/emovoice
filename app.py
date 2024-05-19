@@ -7,7 +7,11 @@ import librosa
 app = Flask(__name__)
 
 # Load the saved model
-model = tf.keras.models.load_model('model_audio.h5')
+try:
+    model = tf.keras.models.load_model('saved_model/model_audio')
+    print("Model loaded successfully.")
+except Exception as e:
+    print(f"Error loading model: {e}")
 
 # Function to extract MFCC features from an audio file
 def extract_mfcc(file_path):
