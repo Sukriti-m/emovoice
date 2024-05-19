@@ -35,3 +35,8 @@ def predict_emotion_api():
     predicted_emotion = predict_emotion(file_path)
     os.remove(file_path)
     return jsonify({'emotion': predicted_emotion})
+
+if __name__ == '__main__':
+    if not os.path.exists('uploads'):
+        os.makedirs('uploads')
+    app.run(debug=True, host='0.0.0.0', port=5000)
